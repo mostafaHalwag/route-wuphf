@@ -1,0 +1,111 @@
+@import url('https://fonts.googleapis.com/css2?family=Playwrite+AU+QLD:wght@100..400&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap');
+@import "tailwindcss";
+@plugin "flowbite-react/plugin/tailwindcss";
+@source "../.flowbite-react/class-list.json";
+@custom-variant dark (&:where(.dark, .dark *));
+
+body{
+    font-family: 'Roboto', sans-serif;
+    @apply bg-base-200 text-base-content dark:bg-dark-base-100 dark:text-dark-base-content transition-all  duration-300;
+
+}
+
+.logo{
+    font-family: 'Playwrite AU QLD', cursive;
+}
+.btn{
+    @apply px-4 py-2 rounded-xl cursor-pointer;
+}
+.row{
+    @apply flex flex-wrap;
+}
+
+@theme {
+
+    --color-base-100: oklch(100% 0 0);
+    --color-base-200: oklch(98% 0 0);
+    --color-base-300: oklch(95% 0 0);
+    --color-base-content: oklch(21% 0.006 285.885);
+    --color-primary: oklch(45% 0.24 277.023);
+    --color-primary-content: oklch(93% 0.034 272.788);
+    --color-secondary: oklch(65% 0.241 354.308);
+    --color-secondary-content: oklch(94% 0.028 342.258);
+    --color-accent: oklch(77% 0.152 181.912);
+    --color-accent-content: oklch(38% 0.063 188.416);
+    --color-neutral: oklch(14% 0.005 285.823);
+    --color-neutral-content: oklch(92% 0.004 286.32);
+    --color-info: oklch(74% 0.16 232.661);
+    --color-info-content: oklch(29% 0.066 243.157);
+    --color-success: oklch(76% 0.177 163.223);
+    --color-success-content: oklch(37% 0.077 168.94);
+    --color-warning: oklch(82% 0.189 84.429);
+    --color-warning-content: oklch(41% 0.112 45.904);
+    --color-error: oklch(71% 0.194 13.428);
+    --color-error-content: oklch(27% 0.105 12.094);
+    --radius-selector: 1rem;
+    --radius-field: 0.5rem;
+    --radius-box: 1rem;
+    --size-selector: 0.25rem;
+    --size-field: 0.25rem;
+    --border: 1px;
+
+
+
+    --color-dark-base-100: oklch(22% .019 237.69);
+    --color-dark-base-200: oklch(20% .019 237.69);
+    --color-dark-base-300: oklch(18% .019 237.69);
+    --color-dark-base-content: oklch(77.383% .043 245.096);
+    --color-dark-primary: oklch(74.703% .158 39.947);
+    --color-dark-primary-content: oklch(14.94% .031 39.947);
+    --color-dark-secondary: oklch(72.537% .177 2.72);
+    --color-dark-secondary-content: oklch(14.507% .035 2.72);
+    --color-dark-accent: oklch(71.294% .166 299.844);
+    --color-dark-accent-content: oklch(14.258% .033 299.844);
+    --color-dark-neutral: oklch(26% .019 237.69);
+    --color-dark-neutral-content: oklch(70% .019 237.69);
+    --color-dark-info: oklch(85.559% .085 206.015);
+    --color-dark-info-content: oklch(17.111% .017 206.015);
+    --color-dark-success: oklch(85.56% .085 144.778);
+    --color-dark-success-content: oklch(17.112% .017 144.778);
+    --color-dark-warning: oklch(85.569% .084 74.427);
+    --color-dark-warning-content: oklch(17.113% .016 74.427);
+    --color-dark-error: oklch(85.511% .078 16.886);
+    --color-dark-error-content: oklch(17.102% .015 16.886);
+    --breakpoint-2xl: 1400px;
+}
+
+@layer utilities {
+    .container {
+        margin-inline: auto;
+    }
+
+    h1 {
+        font-size: 2em;
+    }
+
+    h2 {
+        font-size: 1.5em;
+    }
+
+    h3 {
+        font-size: 1.17em;
+    }
+
+    h4 {
+        font-size: 1em;
+    }
+
+    h5 {
+        font-size: 0.83em;
+    }
+
+    h6 {
+        font-size: 0.67em;
+    }
+    h1,h2,h3,h4,h5,h6 {
+        @apply font-bold;
+    }
+}
+
+@layer base {
+}
