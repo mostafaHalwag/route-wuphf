@@ -45,33 +45,34 @@ console.log(id)
 
     return (
         <div
-            className="w-9/12 max-w-2xl mx-auto bg-base-100 border border-base-200 rounded-lg shadow-md hover:shadow-lg transition-shadow duration-300 dark:bg-dark-base-100 dark:border-dark-base-200 my-8">
+            className="w-11/12 md:w-9/12 max-w-2xl mx-auto bg-base-100 border border-base-200 rounded-lg shadow-md hover:shadow-lg transition-shadow duration-300 dark:bg-dark-base-100 dark:border-dark-base-200 my-8">
 
-            <CommentBox id ={id}>
+            <CommentBox id={id}>
             </CommentBox>
 
 
             {data.comments.map((comment) => (
                 <div key={comment._id}>
-                    <div className="px-8 py-6 rounded border-b border-base-300 dark:border-dark-base-300">
-                        <div className="flex items-center space-x-6">
+                    <div
+                        className="px-4 md:px-8 py-4 md:py-6 rounded border-b border-base-300 dark:border-dark-base-300">
+                        <div className="flex items-center space-x-3 md:space-x-6">
                             <div className="shrink-0">
                                 <img
-                                    className="w-14 h-14 rounded-full object-cover border-2 border-base-200 dark:border-dark-base-200"
+                                    className="w-10 h-10 md:w-14 md:h-14 rounded-full object-cover border-2 border-base-200 dark:border-dark-base-200"
                                     src={comment?.commentCreator?.photo}
                                     alt="user image"/>
                             </div>
                             <div className="flex-1">
-                                <p className="text-lg font-semibold text-base-content truncate dark:text-dark-base-content">
+                                <p className="text-base md:text-lg font-semibold text-base-content truncate dark:text-dark-base-content">
                                     {comment?.commentCreator?.name}
                                 </p>
-                                <p className="text-sm text-base-content/50 truncate dark:text-dark-base-content/50 mt-1">
+                                <p className="text-xs md:text-sm text-base-content/50 truncate dark:text-dark-base-content/50 mt-1">
                                     created
                                     at {comment?.createdAt.split('T')[0]} {comment?.createdAt.split('T')[1].split('.')[0]}
                                 </p>
                             </div>
                         </div>
-                        <p className="mt-6 text-base text-base-content dark:text-dark-base-content leading-relaxed">
+                        <p className="mt-4 md:mt-6 text-sm md:text-base text-base-content dark:text-dark-base-content leading-relaxed">
                             {comment.content}
                         </p>
                     </div>

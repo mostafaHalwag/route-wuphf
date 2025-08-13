@@ -20,7 +20,6 @@ function Login() {
         setLoading(true);
         try {
             const res = await login(data);
-            console.log(res.token)
 
             if (res.message === 'success') {
                 setLoading(false);
