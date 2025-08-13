@@ -3,7 +3,7 @@ import {Link} from "react-router-dom";
 
 function PostCard({post}) {
 
-    const {body, _id, image, user: {name, photo}, createdAt} = post
+    const {body, _id, image, user: {name, photo}, createdAt,} = post
 
     return (<div
             className="w-9/12 max-w-2xl mx-auto bg-base-100 border border-base-200 rounded-lg shadow-md hover:shadow-lg transition-shadow duration-300 dark:bg-dark-base-100 dark:border-dark-base-200 my-8">

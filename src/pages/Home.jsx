@@ -1,11 +1,23 @@
-import React from 'react';
+import React, {useContext} from 'react';
 import {useQuery} from "@tanstack/react-query";
 import getPosts from "../apis/posts.api.js";
 import PostCard from "../components/PostCard.jsx";
+import AddPost from "../components/AddPost.jsx";
+import Pagination from "../components/Pagination.jsx";
+import {pagination} from "../context/Pagination.context.jsx";
 
 function Home() {
-    const {isLoading, isError, data, error} = useQuery({queryKey: ['posts'], queryFn: getPosts});
-    console.log(data)
+    const {cPage,setCPage, setNPage, setPPage, setPages} = useContext(pagination)
+    const {isLoading, isError, data, error} = useQuery({queryKey: ['posts', cPage], queryFn: ()=>getPosts(cPage)});
+    const paginationInfo = data?.paginationInfo
+    if(paginationInfo){
+        const {currentPage, prevPage, nextPage, numberOfPages} = paginationInfo
+        setCPage(currentPage)
+        setPPage(prevPage)
+        setNPage(nextPage)
+        setPages(numberOfPages)
+    }
+    console.log(cPage)
     if (isLoading) {
         return (
             <div className="text-center">
@@ -44,7 +56,9 @@ function Home() {
     }
     return (
         <div className="relative max-w-screen">
+            <AddPost/>
             {data.posts.map((post) => <PostCard key={post._id} post={post}></PostCard>)}
+            <Pagination data={data}/>
         </div>
     )
 }

@@ -1,4 +1,4 @@
-import React, {useContext, useState} from 'react';
+import React, {useContext, useEffect, useState} from 'react';
 import {useForm} from "react-hook-form";
 import {Link, useNavigate} from "react-router-dom";
 import login from "../apis/login.api.js";
@@ -9,6 +9,11 @@ function Login() {
     let [isLoading, setLoading] = useState(false);
     let [error, setError] = useState('');
     let navigate = useNavigate()
+    useEffect(() => {
+        if(localStorage.getItem('token')){
+            navigate('/home')
+        }
+    }, [navigate]);
 
     const {register, handleSubmit,formState:{errors}} = useForm({
         defaultValues: {
@@ -37,8 +42,6 @@ function Login() {
     }
 
     return (
-
-
         <form onSubmit={handleSubmit((data) => onSubmit(data))}
               className="max-w-md mx-auto shadow drop-shadow-base-300 rounded-xl p-5">
             <div>
