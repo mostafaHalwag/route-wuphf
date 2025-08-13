@@ -5,7 +5,7 @@ import PostCard from "../components/PostCard.jsx";
 
 function Home() {
     const {isLoading, isError, data, error} = useQuery({queryKey: ['posts'], queryFn: getPosts});
-
+console.log(data)
     if(isLoading) {
         return(
             <div className="text-center">
