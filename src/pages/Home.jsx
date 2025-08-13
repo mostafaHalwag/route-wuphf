@@ -5,9 +5,9 @@ import PostCard from "../components/PostCard.jsx";
 
 function Home() {
     const {isLoading, isError, data, error} = useQuery({queryKey: ['posts'], queryFn: getPosts});
-console.log(data)
-    if(isLoading) {
-        return(
+    console.log(data)
+    if (isLoading) {
+        return (
             <div className="text-center">
                 <div role="status">
                     <svg aria-hidden="true"
@@ -42,10 +42,11 @@ console.log(data)
             </div>
         </>)
     }
-    return(
-        <div className="max-w-screen">{data.posts.map((post) => <PostCard key={post._id} post={post}></PostCard>)}</div>
+    return (
+        <div className="relative max-w-screen">
+            {data.posts.map((post) => <PostCard key={post._id} post={post}></PostCard>)}
+        </div>
     )
-
 }
 
 export default Home;
