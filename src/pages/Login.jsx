@@ -71,7 +71,7 @@ function Login() {
                 <label htmlFor="password"
                        className="peer-focus:font-medium absolute text-sm text-base-content dark:text-dark-base-content duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto peer-focus:text-accent peer-focus:dark:text-dark-accent peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">Password</label>
             </div>
-            <button type="submit" onClick={() => console.log(errors.name)}
+            <button type="submit" onClick={() => console.log(`Errors = ${errors.name}`)}
                     className="cursor-pointer text-base-content dark:text-dark-base-300 bg-accent hover:bg-accent focus:ring-4 focus:outline-none focus:ring-offset-accent font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-dark-accent dark:hover:bg-dark-accent dark:focus:ring-dark-accent-content">{(isLoading) ?
 
                 <div role="status">

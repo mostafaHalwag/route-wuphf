@@ -12,7 +12,6 @@ export default function ThemeContextProvider({children}) {
             setMode('light')
             localStorage.setItem('mode', 'light')
         }
-        console.log(localStorage.getItem('mode') )
     }
     useEffect(() => {
         const mode = localStorage.getItem('mode')

@@ -1,10 +1,11 @@
 import React from 'react';
 import {useQuery} from "@tanstack/react-query";
 import {getComments} from "../apis/comment.api.js";
+import CommentBox from "./CommentBox.jsx";
 
 function Comments({id}) {
-    const {data, isError, isLoading, error} = useQuery({queryKey:['comments', id], queryFn: () => getComments(id)})
-
+    const {data, isError, isLoading, error} = useQuery({queryKey: ['comments', id], queryFn: () => getComments(id)})
+console.log(id)
     if (isLoading) {
         return (
             <div className="text-center">
@@ -43,32 +44,39 @@ function Comments({id}) {
     }
 
     return (
-        <div className="w-9/12 max-w-2xl mx-auto bg-base-100 border border-base-200 rounded-lg shadow-md hover:shadow-lg transition-shadow duration-300 dark:bg-dark-base-100 dark:border-dark-base-200 my-8">
-            {data.comments.map((comment) => (<>
+        <div
+            className="w-9/12 max-w-2xl mx-auto bg-base-100 border border-base-200 rounded-lg shadow-md hover:shadow-lg transition-shadow duration-300 dark:bg-dark-base-100 dark:border-dark-base-200 my-8">
 
-                <div className="px-6 py-4 rounded border-b border-base-300 dark:border-dark-base-300">
-                    <div className="flex items-center space-x-4">
-                        <div className="shrink-0">
-                            <img
-                                className="w-12 h-12 rounded-full object-cover border-2 border-base-200 dark:border-dark-base-200"
-                                src={comment?.commentCreator?.photo}
-                                alt="user image"/>
+            <CommentBox id ={id}>
+            </CommentBox>
+
+
+            {data.comments.map((comment) => (
+                <div key={comment._id}>
+                    <div className="px-8 py-6 rounded border-b border-base-300 dark:border-dark-base-300">
+                        <div className="flex items-center space-x-6">
+                            <div className="shrink-0">
+                                <img
+                                    className="w-14 h-14 rounded-full object-cover border-2 border-base-200 dark:border-dark-base-200"
+                                    src={comment?.commentCreator?.photo}
+                                    alt="user image"/>
+                            </div>
+                            <div className="flex-1">
+                                <p className="text-lg font-semibold text-base-content truncate dark:text-dark-base-content">
+                                    {comment?.commentCreator?.name}
+                                </p>
+                                <p className="text-sm text-base-content/50 truncate dark:text-dark-base-content/50 mt-1">
+                                    created
+                                    at {comment?.createdAt.split('T')[0]} {comment?.createdAt.split('T')[1].split('.')[0]}
+                                </p>
+                            </div>
                         </div>
-                        <div className="flex-1">
-                            <p className="text-base font-semibold text-base-content truncate dark:text-dark-base-content">
-                                {comment?.commentCreator?.name}
-                            </p>
-                            <p className="text-xs text-base-content/50 truncate dark:text-dark-base-content/50">
-                                created
-                                at {comment?.createdAt.split('T')[0]} {comment?.createdAt.split('T')[1].split('.')[0]}
-                            </p>
-                        </div>
+                        <p className="mt-6 text-base text-base-content dark:text-dark-base-content leading-relaxed">
+                            {comment.content}
+                        </p>
                     </div>
-                    <p className="mt-4 text-sm text-base-content dark:text-dark-base-content leading-relaxed">
-                        {comment.content}
-                    </p>
                 </div>
-            </>))}
+            ))}
         </div>
 
     );

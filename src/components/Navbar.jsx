@@ -8,11 +8,11 @@ function Navbar() {
 
     const [isOpen, setIsOpen] = React.useState(false);
     const toggle = () => setIsOpen(!isOpen);
-    const {token, setToken} = useContext(auth)
+    const {token, setToken, userData} = useContext(auth)
     const navigate = useNavigate()
     const {toggleMode, mode} = useContext(theme)
 
-
+    console.log(userData)
     function logOut() {
         localStorage.removeItem('token')
         setToken(null)
@@ -41,27 +41,35 @@ function Navbar() {
                 <div className={`${!isOpen && 'hidden'} w-full md:block md:w-auto`} id="navbar-default">
                     <ul className="font-medium flex flex-col p-4 md:p-0 mt-4 border border-gray-100 rounded-lg bg-base-200 md:flex-row md:space-x-8 rtl:space-x-reverse md:mt-0 md:border-0 md:bg-base-200 dark:bg-dark-base-100 md:dark:bg-dark-base-100 dark:border-gray-700">
                         {(token != null) ? <>
-                                <li>
+                                <li className="flex items-center">
                                     <Link to={"/home"}
                                           className="block py-2 px-3 text-base-content rounded-sm hover:bg-base-300 md:hover:bg-transparent md:border-0 md:hover:text-accent md:p-0 dark:text-dark-base-content md:dark:hover:text-dark-accent dark:hover:bg-base-300 dark:hover:text-dark-accent md:dark:hover:bg-transparent">
                                         Home
                                     </Link>
                                 </li>
-                                <li>
+
+                                <li className="flex items-center">
                                     <button
                                         className="block py-2 px-3 text-base-content rounded-sm hover:bg-base-300 md:hover:bg-transparent md:border-0 md:hover:text-accent md:p-0 dark:text-dark-base-content md:dark:hover:text-dark-accent dark:hover:bg-base-300 dark:hover:text-dark-accent md:dark:hover:bg-transparent cursor-pointer"
                                         onClick={logOut}>
                                         Logout
                                     </button>
                                 </li>
+                                <li className="flex items-center">
+                                    <Link to={`/profile/${userData?._id}`}
+                                          className="flex items-center py-2 px-3 text-base-content rounded-sm hover:bg-base-300 md:hover:bg-transparent md:border-0 md:hover:text-accent md:p-0 dark:text-dark-base-content md:dark:hover:text-dark-accent dark:hover:bg-base-300 dark:hover:text-dark-accent md:dark:hover:bg-transparent">
+                                        <img className="w-8 h-8 rounded-full mr-2" src={userData?.photo} alt="Profile"/>
+                                        <span>{userData?.name}</span>
+                                    </Link>
+                                </li>
                             </>
                             :
                             <>
-                                <li>
+                                <li className="flex items-center">
                                     <Link to={"/login"}
                                           className="block py-2 px-3 text-base-content rounded-sm hover:bg-base-300 md:hover:bg-transparent md:border-0 md:hover:text-accent md:p-0 dark:text-dark-base-content md:dark:hover:text-dark-accent dark:hover:bg-base-300 dark:hover:text-dark-accent md:dark:hover:bg-transparent">Login</Link>
                                 </li>
-                                <li>
+                                <li className="flex items-center">
                                     <Link to={"/register"}
                                           className="block py-2 px-3 text-base-content rounded-sm bg-accent dark:bg-dark-accent hover:bg-base-300 md:hover:bg-transparent md:hover:border-accent-content md:border-0 md:hover:text-base-content md:p-0 dark:text-base-content md:dark:hover:text-dark-accent dark:hover:bg-base-300 dark:hover:text-dark-accent md:dark:hover:bg-transparent"><span
                                         className="p-3">Register</span></Link>
@@ -69,7 +77,7 @@ function Navbar() {
                             </>}
 
 
-                        <li>
+                        <li className="flex items-center">
 
                             <label className="inline-flex items-center cursor-pointer">
                                 <input type="checkbox" value="" className="sr-only peer" onChange={toggleMode}

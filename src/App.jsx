@@ -1,4 +1,3 @@
-import {zodResolver} from "@hookform/resolvers/zod"
 import './App.css'
 import {createBrowserRouter, RouterProvider} from "react-router-dom";
 import Home from "./pages/Home.jsx";
@@ -8,6 +7,7 @@ import Register from "./pages/Register.jsx";
 import Notfound from "./pages/Notfound.jsx";
 import ProtectionRoute from "./components/ProtectionRoute.jsx";
 import SinglePost from "./pages/SinglePost.jsx";
+import Profile from "./pages/Profile.jsx";
 
 function App() {
     const router = createBrowserRouter([
@@ -18,6 +18,7 @@ function App() {
                 {path: '/register', element: <Register/>},
                 {path: '/home', element: <ProtectionRoute><Home/></ProtectionRoute>},
                 {path: '/post/:id', element: <ProtectionRoute><SinglePost/></ProtectionRoute>},
+                {path: '/profile/:id', element: <ProtectionRoute><Profile/></ProtectionRoute>},
                 {path: '*', element: <Notfound/>},
             ]
         }

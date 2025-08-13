@@ -3,8 +3,6 @@
 import React, {useState} from 'react';
 import {Link, useNavigate} from 'react-router-dom';
 
-import {Alert} from "flowbite-react";
-import {HiInformationCircle} from "react-icons/hi";
 import {useForm} from "react-hook-form";
 import {zodResolver} from "@hookform/resolvers/zod";
 import {RegisterScheme} from "../lib/register.scheme.js";
@@ -173,7 +171,8 @@ function Register() {
                 </div>
 
                 <button type="submit" onClick={() => console.log(errors.name)}
-                        className="cursor-pointer text-base-content dark:text-dark-base-300 bg-accent hover:bg-accent focus:ring-4 focus:outline-none focus:ring-offset-accent font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-dark-accent dark:hover:bg-dark-accent dark:focus:ring-dark-accent-content">{(isLoading) ?
+                        className="cursor-pointer text-base-content dark:text-dark-base-300 bg-accent hover:bg-accent focus:ring-4 focus:outline-none focus:ring-offset-accent font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-dark-accent dark:hover:bg-dark-accent dark:focus:ring-dark-accent-content">
+                    {(isLoading) ?
 
                     <div role="status">
                         <svg aria-hidden="true"
